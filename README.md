@@ -25,7 +25,7 @@ This profile highlights some of the projects I’ve built in my homelab and prof
 ---
 
 ## 📫 Connect
-- 💼 [LinkedIn](https://www.linkedin.com/in/timheverin/)  
+- 💼 [LinkedIn](https://www.linkedin.com/in/tim-heverin/)  
 - 📂 [GitHub Repos](https://github.com/dj-3dub?tab=repositories)  
 
 ---
