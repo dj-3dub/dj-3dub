@@ -1,23 +1,23 @@
 # 👋 Hi, I’m Tim Heverin  
 
-💻 **Senior Systems Engineer | IT Automation | Cloud & Infrastructure**  
+💻 **Senior Systems Engineer | PowerShell Automation | Windows & Azure Infrastructure**  
 
-I design and support enterprise IT environments with a focus on **PowerShell automation, Windows & Azure administration, and system hardening**.  
-This profile highlights some of the projects I’ve built in my homelab and professional work to showcase **practical automation, observability, and DevOps skills**.  
+I design and support enterprise IT environments with a focus on **PowerShell automation, Active Directory & Entra ID, Intune, VMware, and system hardening**.  
+My projects highlight how I use scripting and infrastructure-as-code to improve efficiency, resilience, and security in real-world enterprise environments.  
 
 ---
 
 ## 🔧 Technical Focus
 - **Automation & Scripting** → PowerShell, Bash, Python  
 - **Identity & Access** → Active Directory, Entra ID, Okta  
-- **Cloud & Infra** → Azure, AWS, VMware, Terraform, Kubernetes (K3s)  
-- **Security & Hardening** → Conditional Access, Intune, Defender, Windows/Linux lockdown  
+- **Cloud & Infra** → Azure, AWS, VMware vSphere (HA, DR, clustering), Terraform, Kubernetes (K3s)  
+- **Security & Hardening** → Intune baselines, Conditional Access, Defender for Endpoint, Tenable remediation  
 - **Monitoring & Observability** → Grafana, Prometheus, Loki, ELK  
 
 ---
 
 ## 📌 Featured Projects
-- [**PowerShell-Automation-Toolkit**](https://github.com/dj-3dub/PowerShell-Automation-Toolkit) — Enterprise automation scripts (Intune, Conditional Access, Exchange, Win11 debloat)  
+- [**PowerShell-Automation-Toolkit**](https://github.com/dj-3dub/PowerShell-Automation-Toolkit) — Enterprise automation scripts (Intune baselines, Conditional Access reporting, Exchange hygiene, Windows 11 debloat)  
 - [**deepdish-cluster**](https://github.com/dj-3dub/deepdish-cluster) — K3s cluster provisioned with Terraform (IaC + Kubernetes)  
 - [**monitoring-stack**](https://github.com/dj-3dub/monitoring-stack) — Prometheus + Grafana + Loki observability toolkit  
 - [**aws-f1-static-site**](https://github.com/dj-3dub/aws-f1-static-site) — Terraform-driven AWS S3 hosting with an F1 theme  
