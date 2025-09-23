@@ -17,14 +17,15 @@ My projects highlight how I use scripting and infrastructure-as-code to improve 
 ---
 
 ## 📌 Featured Projects
-- [![PowerShell Logo](https://raw.githubusercontent.com/PowerShell/PowerShell/master/assets/ps_black_64.svg)](https://github.com/dj-3dub/PowerShell-Playbook)
 
-### [PowerShell Playbook](https://github.com/dj-3dub/PowerShell-Playbook)
-A modern PowerShell toolkit for enterprise sysadmins — automate reporting, auditing, and troubleshooting with production-ready scripts.  
-Includes modules for **identity governance**, **security auditing**, **server role inventory**, and **support bundle collection**, with HTML/CSV reporting and full Pester test coverage.
+- [![PowerShell Logo](https://raw.githubusercontent.com/PowerShell/PowerShell/master/assets/ps_white_64.svg#gh-light-mode-only)](https://github.com/dj-3dub/PowerShell-Playbook)  
+  **[PowerShell Playbook](https://github.com/dj-3dub/PowerShell-Playbook)** — Modern automation toolkit for enterprise sysadmins.  
+  Includes modules for **identity governance**, **security auditing**, **server role inventory**, and **support bundle collection** with HTML/CSV reports and Pester tests.
+
 - [**deepdish-cluster**](https://github.com/dj-3dub/deepdish-cluster) — K3s cluster provisioned with Terraform (IaC + Kubernetes)  
 - [**monitoring-stack**](https://github.com/dj-3dub/monitoring-stack) — Prometheus + Grafana + Loki observability toolkit  
 - [**aws-f1-static-site**](https://github.com/dj-3dub/aws-f1-static-site) — Terraform-driven AWS S3 hosting with an F1 theme  
+
 
 ---
 
