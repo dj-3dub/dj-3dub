@@ -19,7 +19,7 @@ My projects highlight how I use scripting and infrastructure-as-code to improve 
 ## 📌 Featured Projects
 
 - **[PowerShell Playbook](https://github.com/dj-3dub/PowerShell-Playbook)** — Modern automation toolkit for enterprise sysadmins.  
-  Includes modules for **identity governance**, **security auditing**, **server role inventory**, and **support bundle collection** with HTML/CSV reports and Pester tests.
+  Modules for **identity governance**, **security auditing**, **server role inventory**, and **support bundle collection**, with HTML/CSV reporting and Pester test coverage.
 
 - [**deepdish-cluster**](https://github.com/dj-3dub/deepdish-cluster) — K3s cluster provisioned with Terraform (IaC + Kubernetes)  
 - [**monitoring-stack**](https://github.com/dj-3dub/monitoring-stack) — Prometheus + Grafana + Loki observability toolkit  
