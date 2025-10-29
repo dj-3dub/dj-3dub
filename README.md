@@ -25,8 +25,6 @@ My work blends hands-on systems engineering with modern DevOps practices  levera
 A high-level overview of my self-hosted **homelab and automation environment**, illustrating how services such as  
 **Pi-hole, Caddy, Authentik, Portainer, Grafana, and LocalStack** integrate across multiple VMs and containers.
 
-[homelab_architecture_public.dot](./homelab_architecture_public.dot)
-
 ---
 
 ## 🧠 Tech Stack
