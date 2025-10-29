@@ -4,6 +4,7 @@
 // Notes: This diagram is safe for public display (no real IPs/secrets).
 // Render locally with: dot -Tsvg homelab_architecture_public.dot -o homelab_architecture_public.svg
 //
+//
 digraph Homelab {
   rankdir=LR;
   bgcolor="white";
