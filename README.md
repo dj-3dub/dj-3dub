@@ -3,7 +3,7 @@
 💻 **Senior Systems Engineer | Cloud & Automation | Identity | DevOps**  
 
 I design and support enterprise IT and homelab environments focused on **automation, cloud infrastructure, and identity**.  
-My work blends hands-on systems engineering with modern DevOps practices — leveraging **PowerShell, Terraform, and GitOps** to improve efficiency, reliability, and security across hybrid environments.
+My work blends hands-on systems engineering with modern DevOps practices  leveraging **PowerShell, Terraform, and GitOps** to improve efficiency, reliability, and security across hybrid environments.
 
 ---
 
@@ -25,7 +25,7 @@ My work blends hands-on systems engineering with modern DevOps practices — lev
 A high-level overview of my self-hosted **homelab and automation environment**, illustrating how services such as  
 **Pi-hole, Caddy, Authentik, Portainer, Grafana, and LocalStack** integrate across multiple VMs and containers.
 
-*Rendered automatically from [homelab_architecture_public.dot](./homelab_architecture_public.dot) using Graphviz.*
+[homelab_architecture_public.dot](./homelab_architecture_public.dot)
 
 ---
 
