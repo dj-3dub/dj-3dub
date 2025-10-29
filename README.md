@@ -16,6 +16,19 @@ My work blends hands-on systems engineering with modern DevOps practices — lev
 
 ---
 
+## 🗺️ Homelab Architecture
+
+<p align="center">
+  <img src="./homelab_architecture_public.svg" alt="Tim Heverin Homelab Architecture" width="100%">
+</p>
+
+A high-level overview of my self-hosted **homelab and automation environment**, illustrating how services such as  
+**Pi-hole, Caddy, Authentik, Portainer, Grafana, and LocalStack** integrate across multiple VMs and containers.
+
+*Rendered automatically from [homelab_architecture_public.dot](./homelab_architecture_public.dot) using Graphviz.*
+
+---
+
 ## 🧠 Tech Stack
 
 <p align="center">
