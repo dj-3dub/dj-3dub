@@ -20,6 +20,7 @@ My work blends hands-on systems engineering with modern DevOps practices  levera
 
 <p align="center">
   <img src="./homelab_architecture_public.svg" alt="Tim Heverin Homelab Architecture" width="100%">
+  <sub>Having trouble viewing the SVG? See the PNG version <a href="./homelab_architecture_public.png">here</a>.</sub>
 </p>
 
 A high-level overview of my self-hosted **homelab and automation environment**, illustrating how services such as  
