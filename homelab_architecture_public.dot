@@ -1,0 +1,180 @@
+
+// Homelab Architecture (Public-Facing) — Graphviz DOT
+// Author: Tim Heverin (dj-3dub)
+// Notes: This diagram is safe for public display (no real IPs/secrets).
+// Render locally with: dot -Tsvg homelab_architecture_public.dot -o homelab_architecture_public.svg
+
+digraph Homelab {
+  rankdir=LR;
+  bgcolor="white";
+  labelloc="t";
+  label="Tim Heverin — Homelab Architecture (Public-Facing)";
+  fontsize=24;
+  fontname="Inter, Helvetica, Arial";
+
+  // ---------- Global node/edge styles ----------
+  node [shape=rectangle, style="rounded,filled", fillcolor="#f7f7fb", color="#bfc3d9", fontname="Inter, Helvetica, Arial", fontsize=12];
+  edge [color="#6b7280", fontname="Inter, Helvetica, Arial", fontsize=10];
+
+  // ---------- Legend ----------
+  subgraph cluster_legend {
+    label="Legend";
+    fontsize=16;
+    color="#e5e7eb";
+    style="rounded";
+    legend1 [label="Solid edge: control/data plane traffic"];
+    legend2 [label="Dashed edge: authentication/SSO"];
+    legend3 [label="Dotted edge: metrics/logs/alerts"];
+    legend4 [label="Clusters group layers or nodes by function"];
+  }
+
+  // ---------- External / Edge ----------
+  subgraph cluster_edge {
+    label="External & Edge";
+    fontsize=16;
+    color="#e5e7eb";
+    style="rounded";
+    Internet[label="Internet / WAN", shape=ellipse, fillcolor="#eef2ff"];
+    GitHub[label="GitHub\n(repos, Actions CI/CD)"];
+    EmailSMS[label="Email / Messaging\n(Alerts, Notifications)"];
+  }
+
+  // ---------- Network Core ----------
+  subgraph cluster_network {
+    label="Core Network & DNS";
+    fontsize=16;
+    color="#e5e7eb";
+    style="rounded";
+    PiHole[label="DNS Filter\nPi-hole"];
+    ReverseProxy[label="Reverse Proxy\nCaddy or Traefik"];
+    VLANs[label="VLANs / Subnets\n(.pizza internal domains)", fillcolor="#ffffff"];
+  }
+
+  // ---------- Compute / Virtualization ----------
+  subgraph cluster_compute {
+    label="Compute & Virtualization";
+    fontsize=16;
+    color="#e5e7eb";
+    style="rounded";
+    ESXi[label="VMware ESXi Host(s)", fillcolor="#ffffff"];
+    // If you also run Hyper-V occasionally, uncomment:
+    // HyperV[label="Hyper-V (experiments)"];
+    subgraph cluster_vms {
+      label="Core VMs";
+      color="#f3f4f6";
+      style="rounded";
+      UbuntuDocker[label="ubuntu-docker\n(Docker Apps)"];
+      UbuntuMonitoring[label="ubuntu-monitoring\n(Monitoring Stack)"];
+      UbuntuAWS[label="ubuntu-aws\n(LocalStack, IaC)"];
+      K3sMaster[label="k3s-master\n(Kubernetes control-plane)"];
+      // Add workers if you want to visualize them
+      // K3sWorker1[label="k3s-worker-1\n(Kubernetes node)"];
+      // K3sWorker2[label="k3s-worker-2\n(Kubernetes node)"];
+    }
+  }
+
+  // ---------- Platform Services ----------
+  subgraph cluster_services {
+    label="Platform Services";
+    fontsize=16;
+    color="#e5e7eb";
+    style="rounded";
+    Authentik[label="SSO / IdP\nAuthentik"];
+    Portainer[label="Container Mgmt\nPortainer"];
+    Zabbix[label="Infra Monitoring\nZabbix Server"];
+    subgraph cluster_observability {
+      label="Observability";
+      color="#f3f4f6";
+      style="rounded";
+      Prometheus[label="Prometheus"];
+      Loki[label="Loki"];
+      Grafana[label="Grafana"];
+      Alertmanager[label="Alertmanager"];
+      Blackbox[label="Blackbox Exporter"];
+      NodeExporter[label="Node Exporter\n(Agents on hosts/VMs)"];
+    }
+    subgraph cluster_serverless {
+      label="Serverless (LocalStack Emulation)";
+      color="#f3f4f6";
+      style="rounded";
+      APIGW[label="API Gateway"];
+      Lambda[label="Lambda"];
+      DynamoDB[label="DynamoDB"];
+      S3[label="S3"];
+    }
+  }
+
+  // ---------- Workloads & Apps ----------
+  subgraph cluster_workloads {
+    label="Workloads & Apps";
+    fontsize=16;
+    color="#e5e7eb";
+    style="rounded";
+    InternalApps[label="Internal Apps\n(dashboard, tools, wikis)"];
+    PizzaStack[label="Pizza Stack\n(AWS serverless emu)"];
+  }
+
+  // ---------- Relationships ----------
+
+  // Internet to edge services
+  Internet -> ReverseProxy [label="HTTPS (443)"];
+  Internet -> GitHub [style=solid, label="Git/HTTPS"];
+  GitHub -> UbuntuAWS [label="CI/CD (pull IaC)"];
+  GitHub -> UbuntuDocker [label="CI/CD (pull images/manifests)"];
+
+  // Network core
+  ReverseProxy -> InternalApps [label="TLS passthrough/termination"];
+  ReverseProxy -> PizzaStack [label="HTTPS routes"];
+  PiHole -> VLANs [label="DNS (53)"];
+  VLANs -> ReverseProxy [label="east-west traffic", style=dashed, color="#94a3b8"];
+
+  // Compute
+  ESXi -> UbuntuDocker [label="VM"];
+  ESXi -> UbuntuMonitoring [label="VM"];
+  ESXi -> UbuntuAWS [label="VM"];
+  ESXi -> K3sMaster [label="VM"];
+  // ESXi -> K3sWorker1 [label="VM"];
+  // ESXi -> K3sWorker2 [label="VM"];
+
+  // Platform services placement (typical)
+  UbuntuDocker -> ReverseProxy [label="Caddy/Traefik container"];
+  UbuntuDocker -> Portainer [label="Docker socket"];
+  UbuntuDocker -> Authentik [label="IdP / OAuth"];
+  UbuntuMonitoring -> Prometheus;
+  UbuntuMonitoring -> Loki;
+  UbuntuMonitoring -> Grafana;
+  UbuntuMonitoring -> Alertmanager;
+  UbuntuMonitoring -> Zabbix;
+
+  // Observability flows
+  NodeExporter -> Prometheus [style=dotted, label="metrics scrape (9100)"];
+  Blackbox -> Prometheus [style=dotted, label="probe targets"];
+  Prometheus -> Alertmanager [style=dotted, label="alerts"];
+  Alertmanager -> EmailSMS [style=dotted, label="notifications"];
+  Loki -> Grafana [style=dotted, label="logs"];
+  Prometheus -> Grafana [style=dotted, label="metrics"];
+  Zabbix -> EmailSMS [style=dotted, label="alerts"];
+  Zabbix -> Grafana [style=dotted, label="datasource (optional)"];
+
+  // SSO flows
+  Authentik -> Grafana [style=dashed, label="SSO / OIDC"];
+  Authentik -> Portainer [style=dashed, label="SSO / OIDC"];
+  Authentik -> InternalApps [style=dashed, label="SSO / OIDC"];
+  Authentik -> ReverseProxy [style=dashed, label="forward auth (optional)"];
+
+  // LocalStack / Serverless emulation
+  UbuntuAWS -> APIGW;
+  UbuntuAWS -> Lambda;
+  UbuntuAWS -> DynamoDB;
+  UbuntuAWS -> S3;
+  PizzaStack -> APIGW [label="invoke"];
+  PizzaStack -> S3 [label="artifacts/assets"];
+  PizzaStack -> DynamoDB [label="state/data"];
+
+  // DNS resolution for services
+  PiHole -> ReverseProxy [label="A/CNAME for internal routes", style=solid];
+
+  // ---------- Styling tweaks ----------
+  {rank=same; ReverseProxy; PiHole;}
+  {rank=same; Prometheus; Loki; Grafana; Alertmanager;}
+}
